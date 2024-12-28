@@ -21,7 +21,11 @@ public class EcommerceService {
         return ecommerceRepository.findAll();
     }
 
+    public Product getProductById(Long id){ return ecommerceRepository.findById(id).orElse(null); }
+
     public Product saveProduct(Product product){
         return ecommerceRepository.save(product);
     }
+
+    public void deleteProduct(Long id){ ecommerceRepository.deleteById(id); }
 }

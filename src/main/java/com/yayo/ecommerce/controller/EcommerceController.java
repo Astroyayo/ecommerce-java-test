@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("api/v1/products")
 public class EcommerceController {
 
     private final EcommerceService ecommerceService;
@@ -27,4 +27,10 @@ public class EcommerceController {
     public List<Product> getAllProducts(){
         return ecommerceService.getAllProducts();
     }
+
+    @GetMapping("/{id}")
+    public Product getProductById(@PathVariable Long id) { return ecommerceService.getProductById(id); }
+
+    @DeleteMapping("/{id}")
+    public void  deleteProductById(@PathVariable Long id){ ecommerceService.deleteProduct(id); }
 }
